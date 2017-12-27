@@ -26,6 +26,8 @@ class GitDiffTool(object):
         Raises a `GitDiffError` if `git diff` outputs anything
         to stderr.
         """
+        with open(compare_branch) as f:
+            return f.read()
         return execute([
             'hg', 'extdiff',
             '-p', 'git', '-o', 'diff', '-o', '--no-color', '-o', '--no-ext-diff',
