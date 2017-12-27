@@ -60,6 +60,5 @@ class GitPathTool(object):
         Returns the output of `git rev-parse --show-toplevel`, which
         is the absolute path for the git project root.
         """
-        command = ['hg', 'root']
-        git_root = execute(command)[0]
+        git_root = os.getcwd()
         return git_root.split('\n')[0] if git_root else u''
