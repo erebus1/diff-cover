@@ -27,10 +27,10 @@ class GitDiffTool(object):
         to stderr.
         """
         return execute([
-            'git', '-c', 'diff.mnemonicprefix=no', 'diff',
-            "{branch}...HEAD".format(branch=compare_branch),
-            '--no-color',
-            '--no-ext-diff'
+            'hg', 'extdiff',
+            '-p', 'git', '-o', 'diff', '-o', '--no-color', '-o', '--no-ext-diff',
+            #'-o', '-c', '-o', 'diff.mnemonicprefix=no'  # do not work with it
+            "-r {branch}".format(branch=compare_branch),
         ])[0]
 
     def diff_unstaged(self):

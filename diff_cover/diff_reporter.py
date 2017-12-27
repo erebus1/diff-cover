@@ -250,7 +250,8 @@ class GitDiffReporter(BaseDiffReporter):
 
             # Parse the hunk information for the source file
             # to determine lines changed for the source file
-            diff_dict[src_path] = self._parse_lines(diff_lines)
+            # strip root path
+            diff_dict[src_path[len(os.getcwd()):]] = self._parse_lines(diff_lines)
 
         return diff_dict
 
