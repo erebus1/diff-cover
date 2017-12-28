@@ -1,7 +1,7 @@
 {% for src_path, stats in src_stats|dictsort %}
 {% if stats.snippets_html %}
         <div class="src-snippet">
-            <div class="src-name">{{ src_path }}</div>
+            <div class="src-name"><a href="{{ src_path.replace('/', '_').replace('.', '_') + ".html" }}">{{ src_path }}</a></div>
             <div class="snippets">
             {% for snippet in stats.snippets_html %}
             {{ snippet }}
